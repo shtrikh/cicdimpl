@@ -14,8 +14,8 @@ public class ModelController {
     private final ModelService modelService;
 
     @GetMapping("/")
-    public Long getId(@RequestParam Model model) {
-        return modelService.getModelId(model);
+    public String getId(@RequestParam Long id) {
+        return modelService.getNameById(id);
     }
 
 }

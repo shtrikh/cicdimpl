@@ -1,19 +1,19 @@
 package service;
 
 import entity.Model;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
+import repository.ModelRepository;
 
 @Service
+@AllArgsConstructor
 public class ModelService {
-    public Model createModel(Long id, String name, String surname, int age){
-        return new Model(id, name, surname, age);
-    }
-    public void printModel(Model model){
-        System.out.println("ID: " + model.getId() + "Name: " + model.getName() +
-                "Surname: " + model.getSurname() + "Age: " + model.getAge());
-    }
-    public Long getModelId(Model model){
-        return model.getId();
+
+    private final ModelRepository modelRepository;
+
+    public String getNameById(Long id) {
+        Model model = modelRepository.findModelById(id);
+        return (model != null) ? model.getName() : null;
     }
 }
